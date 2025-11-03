@@ -1,0 +1,7 @@
+﻿  Main.cpp
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Main.cpp(233,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Main.cpp(280,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Mesh.cpp
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Mesh.cpp(63,43): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...
+  MyOpenGLProject.vcxproj -> G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\x64\Debug\MyOpenGLProject.exe

@@ -1,0 +1,33 @@
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2 - Index Buffer\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2 - Index Buffer\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\2 - Index Buffer\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\3 - Organising\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\3 - Organising\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\3 - Organising\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\4 - Using Shaders\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\4 - Using Shaders\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\4 - Using Shaders\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\5 - Textures\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\5 - Textures\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\5 - Textures\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\6 - Going 3D\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\6 - Going 3D\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\6 - Going 3D\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\7 - Camera\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\7 - Camera\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\7 - Camera\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\8 - Lighting\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\8 - Lighting\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\8 - Lighting\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\9 - Specular Maps\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\9 - Specular Maps\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\9 - Specular Maps\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\10 - Light Types\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\10 - Light Types\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\10 - Light Types\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.MdMergeInputs.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_plat.cache
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\MyOpenGLProject\x64\Debug\MyOpenGLProject.vcxproj.cppwinrt_comp.cache
