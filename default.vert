@@ -21,10 +21,19 @@ out vec2 texCoord;
 uniform mat4 camMatrix;
 uniform mat4 model;
 
+uniform float time;
+uniform float freq;
+uniform float amp;
+uniform float speed;
+
+
 void main()
 {
+
 	// Set our position to the given matrix
 	currentPosition = vec3(model * vec4(aPos, 1.0f));
+
+	currentPosition.y += (amp * sin(currentPosition.x * freq + (time * speed)) + amp * cos(currentPosition.z * freq + (time * speed)));
 
 	// Outputs the normal vector for this vertex
 	Normal = aNormal;
@@ -32,6 +41,8 @@ void main()
 	// Outputs desired colour data to this vertex
 	color = aColor;
 	
+	color = mix(vec3(0.0f, 0.0f, 1.0f), vec3(1.0f, 0.0f, 0.0f), (currentPosition.y) / amp );
+
 	// Outputs texture coordinates to be used
 	texCoord = aTexCoord;
 

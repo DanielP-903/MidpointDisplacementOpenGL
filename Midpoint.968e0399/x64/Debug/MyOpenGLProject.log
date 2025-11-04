@@ -1,11 +1,13 @@
-﻿  Camera.cpp
-  Main.cpp
-G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(121,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(239,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(245,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(337,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Mesh.cpp
-G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Mesh.cpp(65,43): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  Main.cpp
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\HelperFunctions.h(6,14): warning C4091: 'static ': ignored on left of 'HelperFunctions' when no variable is declared
+  (compiling source file 'Main.cpp')
+  
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(85,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Main.cpp(91,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Scene.cpp
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\HelperFunctions.h(6,14): warning C4091: 'static ': ignored on left of 'HelperFunctions' when no variable is declared
+  (compiling source file 'Scene.cpp')
+  
+G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Scene.cpp(50,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Generating Code...
   MyOpenGLProject.vcxproj -> G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\x64\Debug\MidpointDispOpenGL.exe

@@ -21,6 +21,8 @@ public:
 
 	Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures);
 
+	void Regenerate(const std::vector<Vertex>& new_vertices, const std::vector<GLuint>& new_indices = std::vector<GLuint>(), const std::vector<Texture>& new_textures = std::vector<Texture>());
+
 	void Draw(Shader& shader, Camera& camera);
 };
 

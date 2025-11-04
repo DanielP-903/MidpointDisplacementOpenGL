@@ -2,9 +2,18 @@
 
 Mesh::Mesh(std::vector<Vertex>& init_vertices, std::vector<GLuint>& init_indices, std::vector<Texture>& init_textures)
 {
-	vertices = init_vertices;
-	indices = init_indices;
-	textures = init_textures;
+	Regenerate(init_vertices, init_indices, init_textures);
+}
+
+void Mesh::Regenerate(const std::vector<Vertex>& new_vertices, const std::vector<GLuint>& new_indices, const std::vector<Texture>& new_textures)
+{
+	vertices = new_vertices;
+
+	if (new_indices.size() > 0)
+		indices = new_indices;
+
+	if (new_textures.size() > 0)
+		textures = new_textures;
 
 	// Create and bind the vertex array object
 	VAO.Bind();
@@ -30,7 +39,6 @@ Mesh::Mesh(std::vector<Vertex>& init_vertices, std::vector<GLuint>& init_indices
 	VAO.Unbind();
 	VBO.Unbind();
 	EBO.Unbind();
-
 }
 
 void Mesh::Draw(Shader& shader, Camera& camera)

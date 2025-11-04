@@ -11,6 +11,7 @@
 
 #include "shaderClass.h"
 #include <imgui.h>
+#include "HelperFunctions.h"
 
 class Camera
 {

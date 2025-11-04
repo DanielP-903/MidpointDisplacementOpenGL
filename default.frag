@@ -154,7 +154,7 @@ vec4 spotLight()
 
 void main()
 {
-	FragColor = texture(diffuse0, texCoord);
+	FragColor = texture(diffuse0, texCoord) * vec4(color, 1.0f);
 	return;
 
 	// --

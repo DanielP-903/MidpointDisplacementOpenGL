@@ -108,7 +108,7 @@ void Camera::ProcessMouseInput(GLFWwindow* window)
 		if (firstClick)
 		{
 			firstClick = false;
-			glfwSetCursorPos(window, width / 2, height / 2);
+			glfwSetCursorPos(window, width / 2.0f, height / 2.0f);
 		}
 
 		// Get the cursor position on screen
