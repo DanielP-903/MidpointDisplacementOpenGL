@@ -1,8 +1,12 @@
 #ifndef SCENE_CLASS_H
 #define SCENE_CLASS_H
 
-
-#include <random>
+#include<glad/glad.h>
+#include<glm/glm.hpp>
+#include<glm/gtc/type_ptr.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtx/rotate_vector.hpp>
+#include<glm/gtx/vector_angle.hpp>
 #include "Mesh.h"
 
 class Scene
@@ -27,7 +31,7 @@ private:
 	int screenWidth;
 	int screenHeight;
 
-	static const int resolution = 16;
+	static const int resolution = 128;
 	float* heightMap = nullptr;
 
 	float FPS = 0.0f;

@@ -1,5 +1,9 @@
 #include "Camera.h"
 
+#include <imgui.h>
+#include "HelperFunctions.h"
+
+
 // Construct a camera
 Camera::Camera(int cam_width, int cam_height, glm::vec3 cam_position)
 {
