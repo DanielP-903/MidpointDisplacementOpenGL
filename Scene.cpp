@@ -3,7 +3,6 @@
 #include <random>
 #include <imgui.h>
 
-
 Scene::Scene(GLFWwindow* myWindow, int width, int height)
 {
 	window = myWindow;
