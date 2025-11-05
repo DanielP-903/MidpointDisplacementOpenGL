@@ -43,6 +43,7 @@ private:
 	GLFWwindow* window;
 
 	float elapsedTime = 0.0f;
+	float texScale = 1.0f;
 	float frequency = 2.0f;
 	float amplitude = 0.2f;
 	float speed = 1.0f;

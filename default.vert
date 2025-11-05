@@ -41,7 +41,7 @@ void main()
 	// Outputs desired colour data to this vertex
 	color = aColor;
 	
-	color = mix(vec3(0.0f, 0.0f, 0.1f), vec3(0.0f, 0.0f, 1.0f), (currentPosition.y) / amp );
+	//color = mix(vec3(0.5f, 0.5f, 0.5f), vec3(1.0f, 1.0f, 1.0f), (currentPosition.y) / amp );
 
 	// Outputs texture coordinates to be used
 	texCoord = aTexCoord;

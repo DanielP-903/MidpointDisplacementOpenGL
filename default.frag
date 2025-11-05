@@ -24,6 +24,8 @@ uniform bool isWireframe;
 uniform sampler2D diffuse0;
 uniform sampler2D specular0;
 
+uniform float textureScale = 1.0f;
+
 // Uniform vars for light vars and camera position
 uniform vec4 lightColor;
 uniform vec3 lightPos;
@@ -49,6 +51,7 @@ uniform float attenuationConstant = 1.0f;	// Keep at 1.0f or might result in boo
 uniform vec3 spotlightDirection = vec3(0.0f,-1.0f, 0.0f);
 uniform float spotlightInnerAngle = 0.95f;
 uniform float spotlightOuterAngle = 0.9f;
+
 
 // Default directional light (e.g. the Sun)
 vec4 directionalLight()
@@ -153,9 +156,9 @@ vec4 spotLight()
 }
 
 void main()
-{
-	FragColor = texture(diffuse0, texCoord) * vec4(color, 1.0f);
-	return;
+{	
+	FragColor = texture(diffuse0, vec2(texCoord.x,texCoord.y) * textureScale) ;//+ vec4(color, 1.0f);
+	return;	
 
 	// --
 	// For debug wireframe mode

@@ -3,6 +3,7 @@
 #include <random>
 #include <imgui.h>
 
+
 Scene::Scene(GLFWwindow* myWindow, int width, int height)
 {
 	window = myWindow;
@@ -49,12 +50,11 @@ void Scene::Init()
 	// UV coords.
 	int u = 0;
 	int v = 0;
-	int increment = 20.0f / resolution;
+	int increment = 200.0f / resolution;
 
 	int vertIndex = 0;
 
 	std::unique_ptr<Vertex[]> vertices_gen(new Vertex[vertexCount]{});
-
 
 	// Generate plane	
 	for (int z = 0; z < resolution; z++)
@@ -65,6 +65,8 @@ void Scene::Init()
 			float posZ = (float)z;
 
 			vertices_gen[vertIndex].position = glm::vec3(posX, heightMap[vertIndex], posZ);
+			vertices_gen[vertIndex].normal = glm::vec3(0.0f, 1.0f, 0.0f);
+			vertices_gen[vertIndex].colour = glm::vec3(1.0f, 1.0f, 1.0f);
 			vertices_gen[vertIndex].UV = glm::vec2(u, v);
 
 			// *
@@ -116,7 +118,7 @@ void Scene::Init()
 	vertices_vec = std::vector<Vertex>(vertices_gen.get(), vertices_gen.get() + vertexCount);
 	std::vector<GLuint> indices_vec(indices_gen.get(), indices_gen.get() + indexCount);
 	std::vector<Texture> textures_vec(textures, textures + sizeof(textures) / sizeof(Texture));
-
+	
 	floor = new Mesh(vertices_vec, indices_vec, textures_vec);
 
 
@@ -164,6 +166,7 @@ void Scene::Update(float deltaTime)
 
 	// Pass in our object's model and light colour and position to the shader
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "time"), elapsedTime);
+	glUniform1f(glGetUniformLocation(shaderProgram->ID, "textureScale"), texScale);
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "freq"), frequency);
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "amp"), amplitude);
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "speed"), speed);
@@ -225,6 +228,7 @@ void Scene::DebugRender()
 	ImGui::Text("Camera Pitch: %f", mainCamera->pitch);
 	ImGui::Text("Camera Yaw: %f", mainCamera->yaw);
 	ImGui::Text("-- Plane --");
+	ImGui::DragFloat("Texture Scale", &texScale, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Scale", &scale, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Frequency", &frequency, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Amplitude", &amplitude, 0.01f, 0.01f, 10.0f);
