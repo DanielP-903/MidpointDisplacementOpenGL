@@ -5,19 +5,23 @@
 
 
 // Construct a camera
-Camera::Camera(int cam_width, int cam_height, glm::vec3 cam_position)
+Camera::Camera(int cam_width, int cam_height, glm::vec3 cam_position, glm::vec3 cam_direction)
 {
 	width = cam_width;
 	height = cam_height;
 	Position = cam_position;
+	Forward = cam_direction;
+
+	//pitch = glm::degrees(atan2(Forward.y, glm::length(glm::vec2(Forward.x, Forward.z))));
+	//yaw = glm::degrees(atan2(Forward.x, Forward.z));
 }
 
 // Update our camera matrices that define how our camera looks
 void Camera::UpdateMatrix(float FOVdeg, float nearPlane, float farPlane) 
 {
 	// Define our model, view and projection matrices as identity matrices
-	glm::mat4 view = glm::mat4(1.0f);
-	glm::mat4 projection = glm::mat4(1.0f);
+	view = glm::mat4(1.0f);
+	projection = glm::mat4(1.0f);
 
 	fov = FOVdeg;
 	near = nearPlane;
@@ -41,12 +45,25 @@ void Camera::SetCameraSize(int new_width, int new_height)
 	//UpdateMatrix(fov, near, far);
 }
 
-
 // Assign the camera matrix to the shader
 void Camera::AssignMatrix(Shader& shader, const char* uniform)
 {
 	// Assign the camera matrix to the shader, ensuring it is placed in memory
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE, glm::value_ptr(camMatrix));
+}
+
+// Assign the projection matrix to the shader
+void Camera::AssignProjection(Shader& shader, const char* uniform)
+{
+	// Assign the projection matrix to the shader, ensuring it is placed in memory
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE, glm::value_ptr(projection));
+}
+
+// Assign the view matrix to the shader
+void Camera::AssignView(Shader& shader, const char* uniform)
+{
+	// Assign the view matrix to the shader, ensuring it is placed in memory
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE, glm::value_ptr(view));
 }
 
 // Process inputs across keyboard and mouse

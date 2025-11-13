@@ -33,7 +33,7 @@ void main()
 	// Set our position to the given matrix
 	currentPosition = vec3(model * vec4(aPos, 1.0f));
 
-	currentPosition.y += (amp * sin(currentPosition.x * freq + (time * speed)) + amp * cos(currentPosition.z * freq + (time * speed)));
+	//currentPosition.y += (amp * sin(currentPosition.x * freq + (time * speed)) + amp * cos(currentPosition.z * freq + (time * speed)));
 
 	// Outputs the normal vector for this vertex
 	Normal = aNormal;

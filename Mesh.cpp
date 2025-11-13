@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex>& init_vertices, std::vector<GLuint>& init_indices, std::vector<Texture>& init_textures)
+Mesh::Mesh(const std::vector<Vertex>& init_vertices, const std::vector<GLuint>& init_indices, const std::vector<Texture>& init_textures)
 {
 	Regenerate(init_vertices, init_indices, init_textures);
 }
@@ -41,7 +41,7 @@ void Mesh::Regenerate(const std::vector<Vertex>& new_vertices, const std::vector
 	EBO.Unbind();
 }
 
-void Mesh::Draw(Shader& shader, Camera& camera)
+void Mesh::Draw(Shader& shader, Camera& camera, GLuint drawType)
 {
 	shader.Activate();
 	VAO.Bind();
@@ -67,9 +67,11 @@ void Mesh::Draw(Shader& shader, Camera& camera)
 
 	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 	camera.AssignMatrix(shader, "camMatrix");
+	camera.AssignProjection(shader, "projection");
+	camera.AssignView(shader, "view");
 
-	glPointSize(3.0f);
-
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-	//glDrawElements(GL_POINTS, indices.size(), GL_UNSIGNED_INT, 0);
+	glPointSize(5.0f);
+	//glLineWidth(5.0f);
+	//glDrawArrays(drawType, 0, 4);
+	glDrawElements(drawType, indices.size(), GL_UNSIGNED_INT, 0);
 }

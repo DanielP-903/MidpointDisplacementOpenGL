@@ -22,10 +22,12 @@ public:
 
 	// Combined camera matrix
 	glm::mat4 camMatrix = glm::mat4(1.0f);
+	glm::mat4 projection = glm::mat4(1.0f);
+	glm::mat4 view = glm::mat4(1.0f);
 
 	// Camera pitch and yaw angles (in degrees)
-	float pitch = -18.625f;
-	float yaw = -133.875f;
+	float pitch = 0.0f;
+	float yaw = -90.0f;
 
 	// Flag for ensuring the mouse doesn't snap upon first click
 	bool firstClick = false;
@@ -47,11 +49,13 @@ public:
 	float sensitivity = 100.0f;
 
 	// Construct a camera
-	Camera(int cam_width, int cam_height, glm::vec3 cam_position);
+	Camera(int cam_width, int cam_height, glm::vec3 cam_position, glm::vec3 cam_direction = glm::vec3(0.0f, 0.0f, -1.0f));
 
 	// Create our camera matrices that define how our camera looks and what shader it uses
 	void UpdateMatrix(float FOVdeg, float nearPlane, float farPlane);
 	void AssignMatrix(Shader& shader, const char* uniform);
+	void AssignProjection(Shader& shader, const char* uniform);
+	void AssignView(Shader& shader, const char* uniform);
 
 	void SetCameraSize(int new_width, int new_height);
 

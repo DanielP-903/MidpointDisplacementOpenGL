@@ -17,7 +17,7 @@ std::string get_file_contents(const char* filename)
 	throw(errno);
 }
 
-Shader::Shader(const char* vertexFile, const char* fragmentFile)
+Shader::Shader(const char* vertexFile, const char* fragmentFile, const char* geometryFile)
 {
 	// Get the contents of the vertex and fragment shader files
 	std::string vertexCode = get_file_contents(vertexFile);
@@ -26,6 +26,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// Convert the code we have obtained into character strings (so OpenGL can read it)
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
+
 
 	// --- Create vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -37,6 +38,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// Check for errors, are we good?
 	compileErrors(vertexShader, "VERTEX");
 
+
 	// --- Create fragment (pixel) shader
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	// Attach fragment shader source to fragment shader object
@@ -47,11 +49,39 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// Check for errors, are we good?
 	compileErrors(fragmentShader, "FRAGMENT (PIXEL)");
 
+
 	// Create the shader program
 	ID = glCreateProgram();
 	// Attach both vertex and fragment shaders to program
 	glAttachShader(ID, vertexShader);
 	glAttachShader(ID, fragmentShader);
+
+	bool usingGeo = geometryFile != "";
+	GLuint geometryShader;
+
+	// --- Create geometry shader (if provided)
+	if (usingGeo)
+	{
+		// Get the contents of the geometry shader file
+		std::string geometryCode = get_file_contents(geometryFile);
+
+		// Convert the code we have obtained into character strings (so OpenGL can read it)
+		const char* geometrySource = geometryCode.c_str();
+
+		geometryShader = glCreateShader(GL_GEOMETRY_SHADER);
+		// Attach geometry shader source to geometry shader object
+		glShaderSource(geometryShader, 1, &geometrySource, NULL);
+		// Precompile the shader to ensure compiler knows what we're talking about
+		glCompileShader(geometryShader);
+
+		// Check for errors, are we good?
+		compileErrors(geometryShader, "GEOMETRY");
+
+		// Attach geometry shader to program
+		glAttachShader(ID, geometryShader);
+	}
+
+
 	// Link up into created shader program
 	glLinkProgram(ID);
 
@@ -61,6 +91,9 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// No need for these anymore, discard them
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
+
+	if (usingGeo)
+		glDeleteShader(geometryShader);
 }
 
 // Activates the shader program

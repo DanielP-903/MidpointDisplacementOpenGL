@@ -162,6 +162,9 @@
     <None Include="default.vert" />
     <None Include="light.frag" />
     <None Include="light.vert" />
+    <None Include="normalsDisplay.frag" />
+    <None Include="normalsDisplay.geom" />
+    <None Include="normalsDisplay.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

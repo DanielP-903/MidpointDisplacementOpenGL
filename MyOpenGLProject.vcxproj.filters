@@ -105,6 +105,15 @@
     <None Include="light.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="normalsDisplay.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="normalsDisplay.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="normalsDisplay.geom">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shaderClass.h">

@@ -5,6 +5,7 @@ g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\texture.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\stb.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\shaderclass.obj
+g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\scene.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\mesh.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\main.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\imgui_widgets.obj
@@ -14,10 +15,10 @@ g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\imgui_draw.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\imgui_demo.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\imgui.obj
+g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\helperfunctions.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\ebo.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\camera.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\glad.obj
-g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\scene.obj
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\x64\debug\midpointdispopengl.exe
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\x64\debug\midpointdispopengl.pdb
 g:\users\ping998\desktop\projects\c++ projects\opengl\midpointdisplacementopengl\midpoint.968e0399\x64\debug\midpointdispopengl.ilk

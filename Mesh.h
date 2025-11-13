@@ -19,11 +19,11 @@ public:
 
 	VAO VAO;
 
-	Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures);
+	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& indices, const std::vector<Texture>& textures = std::vector<Texture>());
 
 	void Regenerate(const std::vector<Vertex>& new_vertices, const std::vector<GLuint>& new_indices = std::vector<GLuint>(), const std::vector<Texture>& new_textures = std::vector<Texture>());
 
-	void Draw(Shader& shader, Camera& camera);
+	void Draw(Shader& shader, Camera& camera, GLuint drawType = GL_TRIANGLES);
 };
 
 

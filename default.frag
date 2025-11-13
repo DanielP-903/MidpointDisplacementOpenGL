@@ -157,7 +157,7 @@ vec4 spotLight()
 
 void main()
 {	
-	FragColor = texture(diffuse0, vec2(texCoord.x,texCoord.y) * textureScale) ;//+ vec4(color, 1.0f);
+	FragColor = pointLight();// texture(diffuse0, vec2(texCoord.x,texCoord.y) * textureScale) ;//+ vec4(color, 1.0f);
 	return;	
 
 	// --

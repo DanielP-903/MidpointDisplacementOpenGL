@@ -18,7 +18,7 @@ public:
 	GLuint ID;
 
 	// Constructor taking in the vertex and fragment shader files for reading
-	Shader(const char* vertexFile, const char* fragmentFile);
+	Shader(const char* vertexFile, const char* fragmentFile, const char* geometryFile = "");
 
 	// Activates the shader program
 	void Activate();
