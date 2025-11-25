@@ -69,6 +69,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionEntityFactory6(std::nullptr_t = nullptr) noexcept {}
         IActionEntityFactory6(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IActionEntityFactory7 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionEntityFactory7>
+    {
+        IActionEntityFactory7(std::nullptr_t = nullptr) noexcept {}
+        IActionEntityFactory7(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IActionEntityFactoryFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionEntityFactoryFactory>
@@ -104,6 +111,13 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionInvocationHelpDetails(std::nullptr_t = nullptr) noexcept {}
         IActionInvocationHelpDetails(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IActionInvocationHelpDetails2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionInvocationHelpDetails2>
+    {
+        IActionInvocationHelpDetails2(std::nullptr_t = nullptr) noexcept {}
+        IActionInvocationHelpDetails2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IActionRuntime :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionRuntime>
@@ -132,12 +146,26 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IActionRuntime4(std::nullptr_t = nullptr) noexcept {}
         IActionRuntime4(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IActionRuntime5 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionRuntime5>
+    {
+        IActionRuntime5(std::nullptr_t = nullptr) noexcept {}
+        IActionRuntime5(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IActionRuntimeFactory :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IActionRuntimeFactory>
     {
         IActionRuntimeFactory(std::nullptr_t = nullptr) noexcept {}
         IActionRuntimeFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) IActionRuntimeStatics :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IActionRuntimeStatics>
+    {
+        IActionRuntimeStatics(std::nullptr_t = nullptr) noexcept {}
+        IActionRuntimeStatics(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) IAppointmentActionEntity :
         winrt::Windows::Foundation::IInspectable,
@@ -153,12 +181,40 @@ WINRT_EXPORT namespace winrt::Windows::AI::Actions
         IArrayActionEntity(std::nullptr_t = nullptr) noexcept {}
         IArrayActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
+    struct __declspec(empty_bases) IArrayActionEntity2 :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<IArrayActionEntity2>
+    {
+        IArrayActionEntity2(std::nullptr_t = nullptr) noexcept {}
+        IArrayActionEntity2(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
     struct __declspec(empty_bases) IContactActionEntity :
         winrt::Windows::Foundation::IInspectable,
         impl::consume_t<IContactActionEntity>
     {
         IContactActionEntity(std::nullptr_t = nullptr) noexcept {}
         IContactActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) ICustomActionEntityStore :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICustomActionEntityStore>
+    {
+        ICustomActionEntityStore(std::nullptr_t = nullptr) noexcept {}
+        ICustomActionEntityStore(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) ICustomActionEntityStoreFactory :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICustomActionEntityStoreFactory>
+    {
+        ICustomActionEntityStoreFactory(std::nullptr_t = nullptr) noexcept {}
+        ICustomActionEntityStoreFactory(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
+    };
+    struct __declspec(empty_bases) ICustomTextActionEntity :
+        winrt::Windows::Foundation::IInspectable,
+        impl::consume_t<ICustomTextActionEntity>
+    {
+        ICustomTextActionEntity(std::nullptr_t = nullptr) noexcept {}
+        ICustomTextActionEntity(void* ptr, take_ownership_from_abi_t) noexcept : winrt::Windows::Foundation::IInspectable(ptr, take_ownership_from_abi) {}
     };
     struct __declspec(empty_bases) IDateTimeActionEntity :
         winrt::Windows::Foundation::IInspectable,

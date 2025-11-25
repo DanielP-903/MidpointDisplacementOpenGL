@@ -10,6 +10,7 @@ static_assert(winrt::check_version(CPPWINRT_VERSION, "2.0.220531.1"), "Mismatche
 #include "winrt/impl/Windows.ApplicationModel.Appointments.2.h"
 #include "winrt/impl/Windows.ApplicationModel.Contacts.2.h"
 #include "winrt/impl/Windows.Foundation.2.h"
+#include "winrt/impl/Windows.Foundation.Collections.2.h"
 #include "winrt/impl/Windows.UI.2.h"
 #include "winrt/impl/Windows.AI.Actions.2.h"
 namespace winrt::impl
@@ -115,6 +116,18 @@ namespace winrt::impl
         void* result{};
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionEntityFactory6)->CreateAppointmentEntity(*(void**)(&sourceId), *(void**)(&appointment), attendees.size(), get_abi(attendees), &result));
         return winrt::Windows::AI::Actions::AppointmentActionEntity{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_IActionEntityFactory7<D>::CreateCustomTextEntity(param::hstring const& kind, param::hstring const& keyPhrase, param::map_view<hstring, winrt::Windows::Foundation::IInspectable> const& props) const
+    {
+        void* result{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionEntityFactory7)->CreateCustomTextEntity(*(void**)(&kind), *(void**)(&keyPhrase), *(void**)(&props), &result));
+        return winrt::Windows::AI::Actions::CustomTextActionEntity{ result, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_IActionEntityFactory7<D>::CreateArrayEntityWithCustomKind(winrt::Windows::AI::Actions::ActionEntityKind const& elementKind, param::hstring const& customKind, array_view<winrt::Windows::AI::Actions::ActionEntity const> entities) const
+    {
+        void* result{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionEntityFactory7)->CreateArrayEntityWithCustomKind(static_cast<int32_t>(elementKind), *(void**)(&customKind), entities.size(), get_abi(entities), &result));
+        return winrt::Windows::AI::Actions::ArrayActionEntity{ result, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_AI_Actions_IActionFeedback<D>::FeedbackKind() const
     {
@@ -244,6 +257,20 @@ namespace winrt::impl
     {
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionInvocationHelpDetails)->put_HelpUriDescription(*(void**)(&value)));
     }
+    template <typename D> auto consume_Windows_AI_Actions_IActionInvocationHelpDetails2<D>::Changed(winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::AI::Actions::ActionInvocationHelpDetails, winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        winrt::event_token token{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionInvocationHelpDetails2)->add_Changed(*(void**)(&handler), put_abi(token)));
+        return token;
+    }
+    template <typename D> auto consume_Windows_AI_Actions_IActionInvocationHelpDetails2<D>::Changed(auto_revoke_t, winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::AI::Actions::ActionInvocationHelpDetails, winrt::Windows::Foundation::IInspectable> const& handler) const
+    {
+        return impl::make_event_revoker<D, Changed_revoker>(this, Changed(handler));
+    }
+    template <typename D> auto consume_Windows_AI_Actions_IActionInvocationHelpDetails2<D>::Changed(winrt::event_token const& token) const noexcept
+    {
+        WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionInvocationHelpDetails2)->remove_Changed(impl::bind_in(token));
+    }
     template <typename D> auto consume_Windows_AI_Actions_IActionRuntime<D>::ActionCatalog() const
     {
         void* value{};
@@ -302,6 +329,18 @@ namespace winrt::impl
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionRuntime4)->GetActionInvocationContextFromToken(*(void**)(&token), &result));
         return winrt::Windows::AI::Actions::ActionInvocationContext{ result, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_AI_Actions_IActionRuntime5<D>::CustomEntityStore() const
+    {
+        void* value{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionRuntime5)->get_CustomEntityStore(&value));
+        return winrt::Windows::AI::Actions::CustomActionEntityStore{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_IActionRuntimeStatics<D>::GetDefault() const
+    {
+        void* result{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IActionRuntimeStatics)->GetDefault(&result));
+        return winrt::Windows::AI::Actions::ActionRuntime{ result, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_AI_Actions_IAppointmentActionEntity<D>::SourceId() const
     {
         void* value{};
@@ -356,11 +395,53 @@ namespace winrt::impl
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IArrayActionEntity)->GetAll(&result_impl_size, &result));
         return com_array<winrt::Windows::AI::Actions::ActionEntity>{ result, result_impl_size, take_ownership_from_abi };
     }
+    template <typename D> auto consume_Windows_AI_Actions_IArrayActionEntity2<D>::CustomElementKind() const
+    {
+        void* value{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IArrayActionEntity2)->get_CustomElementKind(&value));
+        return hstring{ value, take_ownership_from_abi };
+    }
     template <typename D> auto consume_Windows_AI_Actions_IContactActionEntity<D>::Contact() const
     {
         void* value{};
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::IContactActionEntity)->get_Contact(&value));
         return winrt::Windows::ApplicationModel::Contacts::Contact{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomActionEntityStore<D>::GetLastModifiedTime(param::hstring const& kind) const
+    {
+        winrt::Windows::Foundation::DateTime result{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomActionEntityStore)->GetLastModifiedTime(*(void**)(&kind), put_abi(result)));
+        return result;
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomActionEntityStore<D>::Insert(winrt::Windows::AI::Actions::CustomTextActionEntity const& entity) const
+    {
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomActionEntityStore)->Insert(*(void**)(&entity)));
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomActionEntityStore<D>::InsertMany(array_view<winrt::Windows::AI::Actions::CustomTextActionEntity const> entities) const
+    {
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomActionEntityStore)->InsertMany(entities.size(), get_abi(entities)));
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomActionEntityStore<D>::Delete(param::hstring const& kind) const
+    {
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomActionEntityStore)->Delete(*(void**)(&kind)));
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomTextActionEntity<D>::CustomTextKind() const
+    {
+        void* value{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomTextActionEntity)->get_CustomTextKind(&value));
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomTextActionEntity<D>::KeyPhrase() const
+    {
+        void* value{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomTextActionEntity)->get_KeyPhrase(&value));
+        return hstring{ value, take_ownership_from_abi };
+    }
+    template <typename D> auto consume_Windows_AI_Actions_ICustomTextActionEntity<D>::Properties() const
+    {
+        void* value{};
+        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Actions::ICustomTextActionEntity)->get_Properties(&value));
+        return winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>{ value, take_ownership_from_abi };
     }
     template <typename D> auto consume_Windows_AI_Actions_IDateTimeActionEntity<D>::DateTime() const
     {
@@ -783,6 +864,28 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::IActionEntityFactory7> : produce_base<D, winrt::Windows::AI::Actions::IActionEntityFactory7>
+    {
+        int32_t __stdcall CreateCustomTextEntity(void* kind, void* keyPhrase, void* props, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::AI::Actions::CustomTextActionEntity>(this->shim().CreateCustomTextEntity(*reinterpret_cast<hstring const*>(&kind), *reinterpret_cast<hstring const*>(&keyPhrase), *reinterpret_cast<winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable> const*>(&props)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall CreateArrayEntityWithCustomKind(int32_t elementKind, void* customKind, uint32_t __entitiesSize, void** entities, void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::AI::Actions::ArrayActionEntity>(this->shim().CreateArrayEntityWithCustomKind(*reinterpret_cast<winrt::Windows::AI::Actions::ActionEntityKind const*>(&elementKind), *reinterpret_cast<hstring const*>(&customKind), array_view<winrt::Windows::AI::Actions::ActionEntity const>(reinterpret_cast<winrt::Windows::AI::Actions::ActionEntity const *>(entities), reinterpret_cast<winrt::Windows::AI::Actions::ActionEntity const *>(entities) + __entitiesSize)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::AI::Actions::IActionEntityFactoryFactory> : produce_base<D, winrt::Windows::AI::Actions::IActionEntityFactoryFactory>
     {
     };
@@ -993,6 +1096,26 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::IActionInvocationHelpDetails2> : produce_base<D, winrt::Windows::AI::Actions::IActionInvocationHelpDetails2>
+    {
+        int32_t __stdcall add_Changed(void* handler, winrt::event_token* token) noexcept final try
+        {
+            zero_abi<winrt::event_token>(token);
+            typename D::abi_guard guard(this->shim());
+            *token = detach_from<winrt::event_token>(this->shim().Changed(*reinterpret_cast<winrt::Windows::Foundation::TypedEventHandler<winrt::Windows::AI::Actions::ActionInvocationHelpDetails, winrt::Windows::Foundation::IInspectable> const*>(&handler)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall remove_Changed(winrt::event_token token) noexcept final
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Changed(*reinterpret_cast<winrt::event_token const*>(&token));
+            return 0;
+        }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::AI::Actions::IActionRuntime> : produce_base<D, winrt::Windows::AI::Actions::IActionRuntime>
     {
         int32_t __stdcall get_ActionCatalog(void** value) noexcept final try
@@ -1094,8 +1217,36 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::IActionRuntime5> : produce_base<D, winrt::Windows::AI::Actions::IActionRuntime5>
+    {
+        int32_t __stdcall get_CustomEntityStore(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::AI::Actions::CustomActionEntityStore>(this->shim().CustomEntityStore());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::AI::Actions::IActionRuntimeFactory> : produce_base<D, winrt::Windows::AI::Actions::IActionRuntimeFactory>
     {
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::IActionRuntimeStatics> : produce_base<D, winrt::Windows::AI::Actions::IActionRuntimeStatics>
+    {
+        int32_t __stdcall GetDefault(void** result) noexcept final try
+        {
+            clear_abi(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::AI::Actions::ActionRuntime>(this->shim().GetDefault());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
     };
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
@@ -1181,6 +1332,20 @@ namespace winrt::impl
 #endif
 #ifndef WINRT_LEAN_AND_MEAN
     template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::IArrayActionEntity2> : produce_base<D, winrt::Windows::AI::Actions::IArrayActionEntity2>
+    {
+        int32_t __stdcall get_CustomElementKind(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().CustomElementKind());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
     struct produce<D, winrt::Windows::AI::Actions::IContactActionEntity> : produce_base<D, winrt::Windows::AI::Actions::IContactActionEntity>
     {
         int32_t __stdcall get_Contact(void** value) noexcept final try
@@ -1188,6 +1353,77 @@ namespace winrt::impl
             clear_abi(value);
             typename D::abi_guard guard(this->shim());
             *value = detach_from<winrt::Windows::ApplicationModel::Contacts::Contact>(this->shim().Contact());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::ICustomActionEntityStore> : produce_base<D, winrt::Windows::AI::Actions::ICustomActionEntityStore>
+    {
+        int32_t __stdcall GetLastModifiedTime(void* kind, int64_t* result) noexcept final try
+        {
+            zero_abi<winrt::Windows::Foundation::DateTime>(result);
+            typename D::abi_guard guard(this->shim());
+            *result = detach_from<winrt::Windows::Foundation::DateTime>(this->shim().GetLastModifiedTime(*reinterpret_cast<hstring const*>(&kind)));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall Insert(void* entity) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Insert(*reinterpret_cast<winrt::Windows::AI::Actions::CustomTextActionEntity const*>(&entity));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall InsertMany(uint32_t __entitiesSize, void** entities) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().InsertMany(array_view<winrt::Windows::AI::Actions::CustomTextActionEntity const>(reinterpret_cast<winrt::Windows::AI::Actions::CustomTextActionEntity const *>(entities), reinterpret_cast<winrt::Windows::AI::Actions::CustomTextActionEntity const *>(entities) + __entitiesSize));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall Delete(void* kind) noexcept final try
+        {
+            typename D::abi_guard guard(this->shim());
+            this->shim().Delete(*reinterpret_cast<hstring const*>(&kind));
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::ICustomActionEntityStoreFactory> : produce_base<D, winrt::Windows::AI::Actions::ICustomActionEntityStoreFactory>
+    {
+    };
+#endif
+#ifndef WINRT_LEAN_AND_MEAN
+    template <typename D>
+    struct produce<D, winrt::Windows::AI::Actions::ICustomTextActionEntity> : produce_base<D, winrt::Windows::AI::Actions::ICustomTextActionEntity>
+    {
+        int32_t __stdcall get_CustomTextKind(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().CustomTextKind());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_KeyPhrase(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<hstring>(this->shim().KeyPhrase());
+            return 0;
+        }
+        catch (...) { return to_hresult(); }
+        int32_t __stdcall get_Properties(void** value) noexcept final try
+        {
+            clear_abi(value);
+            typename D::abi_guard guard(this->shim());
+            *value = detach_from<winrt::Windows::Foundation::Collections::IMapView<hstring, winrt::Windows::Foundation::IInspectable>>(this->shim().Properties());
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -1583,6 +1819,10 @@ namespace winrt::impl
 }
 WINRT_EXPORT namespace winrt::Windows::AI::Actions
 {
+    inline auto ActionRuntime::GetDefault()
+    {
+        return impl::call_factory_cast<winrt::Windows::AI::Actions::ActionRuntime(*)(IActionRuntimeStatics const&), ActionRuntime, IActionRuntimeStatics>([](IActionRuntimeStatics const& f) { return f.GetDefault(); });
+    }
 }
 namespace std
 {
@@ -1596,19 +1836,27 @@ namespace std
     template<> struct hash<winrt::Windows::AI::Actions::IActionEntityFactory4> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionEntityFactory5> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionEntityFactory6> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::IActionEntityFactory7> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionEntityFactoryFactory> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionFeedback> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionInvocationContext> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionInvocationContext2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionInvocationHelpDetails> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::IActionInvocationHelpDetails2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionRuntime> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionRuntime2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionRuntime3> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionRuntime4> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::IActionRuntime5> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IActionRuntimeFactory> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::IActionRuntimeStatics> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IAppointmentActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IArrayActionEntity> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::IArrayActionEntity2> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IContactActionEntity> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::ICustomActionEntityStore> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::ICustomActionEntityStoreFactory> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::ICustomTextActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IDateTimeActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IDocumentActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::IFileActionEntity> : winrt::impl::hash_base {};
@@ -1633,6 +1881,8 @@ namespace std
     template<> struct hash<winrt::Windows::AI::Actions::AppointmentActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::ArrayActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::ContactActionEntity> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::CustomActionEntityStore> : winrt::impl::hash_base {};
+    template<> struct hash<winrt::Windows::AI::Actions::CustomTextActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::DateTimeActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::DocumentActionEntity> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Actions::FileActionEntity> : winrt::impl::hash_base {};

@@ -29,24 +29,6 @@ namespace winrt::impl
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult)->get_Headers(&value));
         return winrt::Windows::Foundation::Collections::ValueSet{ value, take_ownership_from_abi };
     }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilter<D>::Initialize(param::hstring const& clientAppUserModelId, param::hstring const& serverPackageFamilyName, param::hstring const& serverId) const
-    {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter)->Initialize(*(void**)(&clientAppUserModelId), *(void**)(&serverPackageFamilyName), *(void**)(&serverId)));
-    }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilter<D>::OnMessage(param::hstring const& message, winrt::Windows::AI::Agents::Mcp::McpMessageDirection const& direction, winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const& filterResponse) const
-    {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter)->OnMessage(*(void**)(&message), static_cast<int32_t>(direction), *(void**)(&filterResponse)));
-    }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>::MessageAction() const
-    {
-        winrt::Windows::AI::Agents::Mcp::McpMessageAction value{};
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse)->get_MessageAction(reinterpret_cast<int32_t*>(&value)));
-        return value;
-    }
-    template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpMessageFilterResponse<D>::MessageAction(winrt::Windows::AI::Agents::Mcp::McpMessageAction const& value) const
-    {
-        check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse)->put_MessageAction(static_cast<int32_t>(value)));
-    }
     template <typename D> auto consume_Windows_AI_Agents_Mcp_IMcpNamedPipeConnectionServer<D>::Connect(winrt::Windows::AI::Agents::Mcp::McpServerContext const& hostContext, param::hstring const& pipeName, winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult const& connectionResult) const
     {
         check_hresult(WINRT_IMPL_SHIM(winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer)->Connect(*(void**)(&hostContext), *(void**)(&pipeName), *(void**)(&connectionResult)));
@@ -219,44 +201,6 @@ namespace winrt::impl
             clear_abi(value);
             typename D::abi_guard guard(this->shim());
             *value = detach_from<winrt::Windows::Foundation::Collections::ValueSet>(this->shim().Headers());
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-    };
-#endif
-    template <typename D>
-    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter>
-    {
-        int32_t __stdcall Initialize(void* clientAppUserModelId, void* serverPackageFamilyName, void* serverId) noexcept final try
-        {
-            typename D::abi_guard guard(this->shim());
-            this->shim().Initialize(*reinterpret_cast<hstring const*>(&clientAppUserModelId), *reinterpret_cast<hstring const*>(&serverPackageFamilyName), *reinterpret_cast<hstring const*>(&serverId));
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-        int32_t __stdcall OnMessage(void* message, int32_t direction, void* filterResponse) noexcept final try
-        {
-            typename D::abi_guard guard(this->shim());
-            this->shim().OnMessage(*reinterpret_cast<hstring const*>(&message), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageDirection const*>(&direction), *reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse const*>(&filterResponse));
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-    };
-#ifndef WINRT_LEAN_AND_MEAN
-    template <typename D>
-    struct produce<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : produce_base<D, winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse>
-    {
-        int32_t __stdcall get_MessageAction(int32_t* value) noexcept final try
-        {
-            typename D::abi_guard guard(this->shim());
-            *value = detach_from<winrt::Windows::AI::Agents::Mcp::McpMessageAction>(this->shim().MessageAction());
-            return 0;
-        }
-        catch (...) { return to_hresult(); }
-        int32_t __stdcall put_MessageAction(int32_t value) noexcept final try
-        {
-            typename D::abi_guard guard(this->shim());
-            this->shim().MessageAction(*reinterpret_cast<winrt::Windows::AI::Agents::Mcp::McpMessageAction const*>(&value));
             return 0;
         }
         catch (...) { return to_hresult(); }
@@ -562,8 +506,6 @@ namespace std
 {
 #ifndef WINRT_LEAN_AND_MEAN
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpHttpConnectionResult> : winrt::impl::hash_base {};
-    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilter> : winrt::impl::hash_base {};
-    template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpMessageFilterResponse> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpNamedPipeConnectionServer> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpResourcesStatics> : winrt::impl::hash_base {};
@@ -575,7 +517,6 @@ namespace std
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpSseConnectionServer> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::IMcpStdioConnectionInfo> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpHttpConnectionResult> : winrt::impl::hash_base {};
-    template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpMessageFilterResponse> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpNamedPipeConnectionResult> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpResources> : winrt::impl::hash_base {};
     template<> struct hash<winrt::Windows::AI::Agents::Mcp::McpServerContext> : winrt::impl::hash_base {};
