@@ -86,7 +86,7 @@ vec4 directionalLight()
 vec4 pointLight()
 {	
 	// Ambient light value
-	float ambient = 0.2f;
+	float ambient = 0.3f;
 
 
 	// Falloff (attenuation)

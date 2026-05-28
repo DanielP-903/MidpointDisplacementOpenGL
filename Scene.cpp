@@ -3,14 +3,16 @@
 #include <random>
 #include <imgui.h>
 #include <filesystem>
+#include <cmath>
+#include <utility>
 
 // Vertices coordinates
 Vertex vertices[] =
 { //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
-	Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
+	Vertex{vec3(-1.0f, 0.0f,  1.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3(-1.0f, 0.0f, -1.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), vec2(0.0f, 1.0f)},
+	Vertex{vec3(1.0f, 0.0f, -1.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), vec2(1.0f, 1.0f)},
+	Vertex{vec3(1.0f, 0.0f,  1.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), vec2(1.0f, 0.0f)}
 };
 
 // Indices for vertices order
@@ -22,14 +24,14 @@ GLuint indices[] =
 
 Vertex lightVertices[] =
 { //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
-	Vertex{glm::vec3(-0.1f, -0.1f,  0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-0.1f, -0.1f, -0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3( 0.1f, -0.1f, -0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3( 0.1f, -0.1f,  0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-0.1f,  0.1f,  0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-0.1f,  0.1f, -0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3( 0.1f,  0.1f, -0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3( 0.1f,  0.1f,  0.1f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}
+	Vertex{vec3(-0.1f, -0.1f,  0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3(-0.1f, -0.1f, -0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3( 0.1f, -0.1f, -0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3( 0.1f, -0.1f,  0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3(-0.1f,  0.1f,  0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3(-0.1f,  0.1f, -0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3( 0.1f,  0.1f, -0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)},
+	Vertex{vec3( 0.1f,  0.1f,  0.1f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), vec2(0.0f, 0.0f)}
 };
 
 GLuint lightIndices[] =
@@ -68,12 +70,12 @@ void Scene::Init()
 	std::cout << "Scene Init" << "\n";
 
 	// Create our camera at the window's size
-	//mainCamera = new Camera(screenWidth, screenHeight, glm::vec3(-1.49f, 1.66f, 0.2));
-	//mainCamera = new Camera(screenWidth, screenHeight, glm::vec3(0.0f, 0.0f, 0.0f));
-	//mainCamera = new Camera(screenWidth, screenHeight, glm::vec3(0.0f, 1.0f, 2.0f));
-	mainCamera = new Camera(screenWidth, screenHeight, glm::vec3(12.31f, 5.58f, 12.89f));
-	//mainCamera->Forward = glm::vec3(0.899662f, -0.436409f, -0.012432f);
-	//mainCamera->Forward = glm::vec3(-0.656790f, -0.319373f, -0.683102f);
+	//mainCamera = new Camera(screenWidth, screenHeight, vec3(-1.49f, 1.66f, 0.2));
+	//mainCamera = new Camera(screenWidth, screenHeight, vec3(0.0f, 0.0f, 0.0f));
+	//mainCamera = new Camera(screenWidth, screenHeight, vec3(0.0f, 1.0f, 2.0f));
+	mainCamera = new Camera(screenWidth, screenHeight, vec3(12.31f, 5.58f, 12.89f));
+	//mainCamera->Forward = vec3(0.899662f, -0.436409f, -0.012432f);
+	//mainCamera->Forward = vec3(-0.656790f, -0.319373f, -0.683102f);
 
 	std::string planksPath = std::string(PROJECT_DIR) + "/planks.png";
 	Texture textures[]
@@ -92,7 +94,7 @@ void Scene::Init()
 		}
 	}
 	
-	float scale = 1.0f;
+	float defaultScale = 1.0f;
 	
 	constexpr size_t vertexCount = static_cast<size_t>(resolution) * resolution;
 	constexpr size_t indexCount = static_cast<size_t>(((resolution - 1) * (resolution - 1))) * 6;
@@ -114,10 +116,10 @@ void Scene::Init()
 			float posX = (float)x;
 			float posZ = (float)z;
 	
-			vertices_gen[vertIndex].position = glm::vec3(posX, heightMap[vertIndex], posZ);
-			vertices_gen[vertIndex].colour = glm::vec3(1.0f, 1.0f, 1.0f);
-			vertices_gen[vertIndex].normal = glm::vec3(0.0f, 1.0f, 0.0f);
-			vertices_gen[vertIndex].UV = glm::vec2(u, v);
+			vertices_gen[vertIndex].position = vec3(posX, heightMap[vertIndex], posZ);
+			vertices_gen[vertIndex].colour = vec3(1.0f, 1.0f, 1.0f);
+			vertices_gen[vertIndex].normal = vec3(0.0f, 1.0f, 0.0f);
+			vertices_gen[vertIndex].UV = vec2(u, v);
 	
 			// *
 	
@@ -130,7 +132,7 @@ void Scene::Init()
 	
 	std::unique_ptr<GLuint[]> indices_gen(new GLuint[indexCount]{});
 	
-	glm::vec3 p1{}, p2{}, p3{}, A{}, B{}, normal{};
+	vec3 p1{}, p2{}, p3{}, A{}, B{}, normal{};
 	
 	//Set up index list
 	vertIndex = 0;
@@ -149,7 +151,7 @@ void Scene::Init()
 			A = p2 - p1;
 			B = p3 - p1;
 			
-			glm::vec3 normal = -glm::normalize(glm::cross(A, B));
+			vec3 normal = -normalize(cross(A, B));
 			
 			vertices_gen[indices_gen[vertIndex]].normal = normal;
 			vertices_gen[indices_gen[vertIndex + 1]].normal = normal;
@@ -171,7 +173,7 @@ void Scene::Init()
 			A = p2 - p1;
 			B = p3 - p1;
 			
-			normal = -glm::normalize(glm::cross(A, B));
+			normal = -normalize(cross(A, B));
 			
 			vertices_gen[indices_gen[vertIndex + 3]].normal = normal;
 			vertices_gen[indices_gen[vertIndex + 4]].normal = normal;
@@ -215,8 +217,8 @@ void Scene::Init()
 	lightProgram = new Shader(lightVertex.c_str(), lightFragment.c_str());
 
 	// Create an identity matrix for the light cube and translate it to the light's position
-	glm::mat4 lightModel = glm::mat4(1.0f);
-	lightModel = glm::translate(lightModel, lightPos);
+	mat4 lightModel = mat4(1.0f);
+	lightModel = translate(lightModel, lightPos);
 
 	std::vector<Vertex> lightVertices_vec(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
 	std::vector<GLuint> lightIndices_vec(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
@@ -224,22 +226,21 @@ void Scene::Init()
 	light = new Mesh(lightVertices_vec, lightIndices_vec, std::vector<Texture>());
 
 
-
 	// Define the object's position
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 objectScale = glm::vec3(scale, 1.0f, scale);
+	vec3 objectPos = vec3(0.0f, 0.0f, 0.0f);
+	vec3 objectSize = vec3(objectScale, 1.0f, objectScale);
 
 	// Create an identity matrix for the object and translate it to the origin
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-	objectModel = glm::scale(objectModel, objectScale);
+	mat4 objectModel = mat4(1.0f);
+	objectModel = translate(objectModel, objectPos);
+	objectModel = scale(objectModel, objectSize);
 
 
 	// Activate our base shader so we are using it
 	shaderProgram->Activate();
 
 	// Pass in our object's model and light colour and position to the shader
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, "model"), 1, GL_FALSE, value_ptr(objectModel));
 	glUniform4f(glGetUniformLocation(shaderProgram->ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram->ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 
@@ -247,7 +248,14 @@ void Scene::Init()
 
 	normalsDisplayProgram->Activate();
 
-	glUniformMatrix4fv(glGetUniformLocation(normalsDisplayProgram->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniformMatrix4fv(glGetUniformLocation(normalsDisplayProgram->ID, "model"), 1, GL_FALSE, value_ptr(objectModel));
+
+	testEvent += Bind(this, &Scene::TestFunc);
+}
+
+void Scene::TestFunc() 
+{
+	std::cout << "Event fired!" << "\n";
 }
 
 void Scene::PostInit()
@@ -280,8 +288,8 @@ void Scene::Update(float deltaTime)
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "speed"), speed);
 
 	// Update light colour and position
-	lightColor = glm::make_vec4(colours);
-	lightPos = glm::make_vec3(customLightPos);
+	lightColor = make_vec4(colours);
+	lightPos = make_vec3(customLightPos);
 
 	normalsDisplayProgram->Activate();
 
@@ -310,19 +318,19 @@ void Scene::Render()
 	glUniform1f(wireframeUni, wireframe);
 
 	// Define the object's position
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 objectScale = glm::vec3(scale, 1.0f, scale);
+	vec3 objectPos = vec3(0.0f, 0.0f, 0.0f);
+	vec3 objectSize = vec3(objectScale, 1.0f, objectScale);
 
 	// Create an identity matrix for the object and translate it to the origin
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-	objectModel = glm::scale(objectModel, objectScale);
+	mat4 objectModel = mat4(1.0f);
+	objectModel = translate(objectModel, objectPos);
+	objectModel = scale(objectModel, objectSize);
 
 	shaderProgram->Activate();
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram->ID, "model"), 1, GL_FALSE, value_ptr(objectModel));
 	glUniform4f(glGetUniformLocation(shaderProgram->ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram->ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
-	glm::vec3 sunDirection = glm::make_vec3(directionalDir);
+	vec3 sunDirection = make_vec3(directionalDir);
 	glUniform3f(glGetUniformLocation(shaderProgram->ID, "directionalDir"), sunDirection.x, sunDirection.y, sunDirection.z);
 
 	glUniform1f(glGetUniformLocation(shaderProgram->ID, "attenuationQuadratic"), attenuationQuadraticValue);
@@ -333,11 +341,11 @@ void Scene::Render()
 	lightProgram->Activate();
 
 	// Create an identity matrix for the light cube and translate it to the light's position
-	glm::mat4 lightModel = glm::mat4(1.0f);
-	lightModel = glm::translate(lightModel, lightPos);
+	mat4 lightModel = mat4(1.0f);
+	lightModel = translate(lightModel, lightPos);
 
 	// Update light shader uniforms
-	glUniformMatrix4fv(glGetUniformLocation(lightProgram->ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
+	glUniformMatrix4fv(glGetUniformLocation(lightProgram->ID, "model"), 1, GL_FALSE, value_ptr(lightModel));
 	glUniform4f(glGetUniformLocation(lightProgram->ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 
 
@@ -349,10 +357,9 @@ void Scene::Render()
 	normalsDisplayProgram->Activate();
 
 	// then draw model with normal visualizing geometry shader
-	glUniformMatrix4fv(glGetUniformLocation(normalsDisplayProgram->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniformMatrix4fv(glGetUniformLocation(normalsDisplayProgram->ID, "model"), 1, GL_FALSE, value_ptr(objectModel));
 
 	floor->Draw(*normalsDisplayProgram, *mainCamera);
-
 
 }
 
@@ -360,13 +367,11 @@ void Scene::DebugRender()
 {
 	//std::cout << "Scene Debug Render" << "\n";
 
+	ImGui::Text("-- Debugging --");
 	ImGui::Text("%.1f FPS", FPS);
-
 	ImGui::Checkbox("Draw?", &draw);
-
-	// Wireframe
 	ImGui::Checkbox("Wireframe Mode", &wireframe);
-
+	ImGui::InputFloat("Normal Visualisers Size", &mag, 0.5f);
 	ImGui::Text("-- Camera --");
 	ImGui::Text("Camera Position: %f, %f, %f", mainCamera->Position.x, mainCamera->Position.y, mainCamera->Position.z);
 	ImGui::Text("Camera Forward Vector: %f, %f, %f", mainCamera->Forward.x, mainCamera->Forward.y, mainCamera->Forward.z);
@@ -380,72 +385,311 @@ void Scene::DebugRender()
 	ImGui::InputFloat("Light Linear Value", &attenuationLinearValue, 0.01f);
 	ImGui::InputFloat("Light Constant Value", &attenuationConstantValue, 0.01f);
 	ImGui::Text("-- Plane --");
-	ImGui::DragFloat("Magnitude", &mag, 0.1f, -100.0f, 100.0f);
 	ImGui::DragFloat("Texture Scale", &texScale, 0.01f, 0.01f, 10.0f);
-	ImGui::DragFloat("Scale", &scale, 0.01f, 0.01f, 10.0f);
+	ImGui::DragFloat("Scale", &objectScale, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Frequency", &frequency, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Amplitude", &amplitude, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Speed", &speed, 0.01f, 0.01f, 10.0f);
 	ImGui::DragFloat("Randomness", &randomness, 0.01f, 0.01f, 10.0f);
+	ImGui::Text("-- Midpoint Displacement --");
+	ImGui::InputFloat("Corner Min Start Height", &SminRange, 0.25f);
+	ImGui::InputFloat("Corner Max Start Height", &SmaxRange, 0.25f);
 	if (ImGui::Button("Regenerate Height Map")) 
 	{
-		glm::vec3 p1{}, p2{}, p3{}, A{}, B{}, normal{};
-
-		for (size_t i = 0; i < vertices_vec.size(); i++)
-		{
-			vertices_vec[i].position = glm::vec3(vertices_vec[i].position.x, ((float)(rand()) / ((float)RAND_MAX)) * (randomness), vertices_vec[i].position.z);
-		}
-
-		// Re-calculate normal
-		for (size_t i = 0; i < vertices_vec.size(); i+=6)
-		{
-			// --
-
-			// * * * * *
-			// *     *
-			// *   *
-			// * *
-			// *
-
-			p1 = vertices_vec[indices_vec[i]].position;
-			p2 = vertices_vec[indices_vec[i + 1]].position;
-			p3 = vertices_vec[indices_vec[i + 2]].position;
-			A = p2 - p1;
-			B = p3 - p1;
-
-			normal = -glm::normalize(glm::cross(A, B));
-
-			vertices_vec[indices_vec[i]].normal = normal;
-			vertices_vec[indices_vec[i + 1]].normal = normal;
-			vertices_vec[indices_vec[i + 2]].normal = normal;
-
-			// --
-			// --
-
-			//         *
-			//       * *
-			//     *   *
-			//   *     *
-			// * * * * *
-
-			p1 = vertices_vec[indices_vec[i + 3]].position;
-			p2 = vertices_vec[indices_vec[i + 4]].position;
-			p3 = vertices_vec[indices_vec[i + 5]].position;
-			A = p2 - p1;
-			B = p3 - p1;
-
-			normal = -glm::normalize(glm::cross(A, B));
-
-			vertices_vec[indices_vec[i + 3]].normal = normal;
-			vertices_vec[indices_vec[i + 4]].normal = normal;
-			vertices_vec[indices_vec[i + 5]].normal = normal;
-
-			// --
-		}
-
-		floor->Regenerate(vertices_vec);
+		GenerateMidpointDisplacement();
+	}
+	if (ImGui::Button("Call Test Event")) 
+	{
+		testEvent.Invoke();
 	}
 }
+
+void Scene::GenerateMidpointDisplacement()
+{
+	MidpointDisplacement();
+
+	RecalculatePositions();
+	RecalculateNormals();
+	floor->Regenerate(vertices_vec);
+}
+
+void Scene::RecalculatePositions() 
+{
+	for (size_t i = 0; i < vertices_vec.size(); i++)
+	{
+		vertices_vec[i].position = vec3(
+			vertices_vec[i].position.x,
+			heightMap[i], 
+			vertices_vec[i].position.z
+		);
+	}
+}
+
+void Scene::RecalculateNormals() 
+{
+	vec3 p1{}, p2{}, p3{}, A{}, B{}, normal{};
+
+	// Re-calculate normals
+	for (size_t i = 0; i < vertices_vec.size(); i += 3)
+	{
+		// *
+		// * *
+		// *   *
+		// *     *
+		// * * * * *
+
+		p1 = vertices_vec[indices_vec[i]].position;
+		p2 = vertices_vec[indices_vec[i + 1]].position;
+		p3 = vertices_vec[indices_vec[i + 2]].position;
+		A = p2 - p1;
+		B = p3 - p1;
+
+		normal = -normalize(cross(A, B));
+
+		vertices_vec[indices_vec[i]].normal = normal;
+		vertices_vec[indices_vec[i + 1]].normal = normal;
+		vertices_vec[indices_vec[i + 2]].normal = normal;
+	}
+}
+
+// Midpoint displacement algorithm for generating terrain
+void Scene::MidpointDisplacement(int startValue, bool useDefault)
+{
+	// Use the modified min and max ranges
+	minRange = SminRange;
+	maxRange = SmaxRange;
+
+	// Get the size of terrain iterations required
+	int resolutionSize = abs(sqrt(resolution - 1));
+
+	// Ensure that resolution is correct size (2^n + 1)
+	for (int i = 0; i < 12; i++)
+	{
+		// Check resolution
+		if (pow(2, i) == (resolution - 1))
+		{
+			// Increase size based on resolution
+			resolutionSize = i + 1;
+			break;
+		}
+	}
+
+	// Initialise grid (default height)
+	for (size_t i = 0; i < resolution * resolution; i++)
+	{
+		heightMap[i] = 0.0f;
+	}
+
+	// Seed corners initially
+	SetHeight(ivec2(0, 0), useDefault ? GenerateRandomHeight(maxRange) : customCornerValues[0]);
+	SetHeight(ivec2(0, resolution - 1), useDefault ? GenerateRandomHeight(maxRange) : customCornerValues[1]);
+	SetHeight(ivec2(resolution - 1, 0), useDefault ? GenerateRandomHeight(maxRange) : customCornerValues[2]);
+	SetHeight(ivec2(resolution - 1, resolution - 1), useDefault ? GenerateRandomHeight(maxRange) : customCornerValues[3]);
+
+	// Initial square end point, initially terrain resolution
+	int squareSize = resolution - 1;
+
+	// Initialise square counts
+	int noSquares = (resolution - 1) / squareSize;
+	int noSquaresHorizontal = 1;
+	int noSquaresVertical = 1;
+	
+	ivec2 squareStart = { 0, 0 };
+	ivec2 squareEnd = { 0, 0 };
+
+	int itr = 0;
+
+	// Do midpoint displacement until the number of squares reaches maximum
+	while (itr < resolutionSize)
+	{
+		// Get no of squares at this iteration
+		noSquares = pow(4, itr);
+
+		itr++;
+
+		squareStart = { 0, 0 };
+		squareEnd = { 0, 0 };
+
+		squareSize = (resolution - 1) / sqrt(noSquares);
+		noSquaresHorizontal = sqrt(noSquares);
+		noSquaresVertical = sqrt(noSquares);
+
+		// Horizontal squares
+		for (int i = 0; i < noSquaresHorizontal; i++)
+		{
+			squareEnd.x += squareSize;
+			squareEnd.y = 0;
+			squareStart.y = 0;
+
+			// Check if any pos has gone beyond terrain limits
+			if (squareEnd.x > resolution || squareStart.x > resolution)
+				break;
+
+			// Vertical squares
+			for (int j = 0; j < noSquaresVertical; j++)
+			{
+				squareEnd.y += squareSize;
+
+				// Check if any pos has gone beyond terrain limits
+				if (squareEnd.y > resolution || squareStart.y > resolution)
+					break;
+
+				// Find corners, centre and sides of this square at the start x,y and end x,y
+				SquareStep(squareStart, squareEnd);
+				DiamondStep(squareStart, squareEnd);
+
+				squareStart.y += squareSize;
+			}
+
+			squareStart.x += squareSize;
+		}
+
+		minRange *= 0.5f;
+		maxRange *= 0.5f;
+	}
+}
+
+// Square step to work out the corner heights and centre of each square
+// Subsidiary of the midpoint displacement algorithm
+void Scene::SquareStep(ivec2 start, ivec2 end)
+{
+	// Before
+	// ? --------- ?
+	// |           |
+	// |           |
+	// |           |
+	// |           |
+	// |           |
+	// ? --------- ?
+
+	// Corner positions
+	ivec2 topLeft = start;
+	ivec2 bottomLeft = ivec2(start.x, end.y);
+	ivec2 topRight = ivec2(end.x, start.y);
+	ivec2 bottomRight = end;
+
+	// Get corner values of the square
+	cornerValues[0] = GetHeight(topLeft);
+	cornerValues[1] = GetHeight(bottomLeft);
+	cornerValues[2] = GetHeight(topRight);
+	cornerValues[3] = GetHeight(bottomRight);
+
+	// Calculate centre point
+	ivec2 centre = MathHelpers::Midpoint(start, end);
+
+	// Calculate height
+	float centreHeight = (cornerValues[0] + cornerValues[1] + cornerValues[2] + cornerValues[3]) / (sizeof(cornerValues) / sizeof(int));
+
+	// Finally assign the height
+	SetHeight(centre, centreHeight);
+
+	// After
+	// 0 --------- 2
+	// |     |     |
+	// |     |     |
+	// | --- C --- |
+	// |     |     |
+	// |     |     |
+	// 1 --------- 3
+}
+
+// Diamond step to work out side heights of each square
+// Subsidiary of the midpoint displacement algorithm
+void Scene::DiamondStep(ivec2 start, ivec2 end)
+{
+	// Calculate height of midpoint by getting the averages of the corner values
+	
+	// Before
+	// 0 --------- 2
+	// |           |
+	// |           |
+	// |           |
+	// |           |
+	// |           |
+	// 1 --------- 3
+
+	// Corner positions
+	ivec2 topLeft		= start;
+	ivec2 bottomLeft	= ivec2(start.x, end.y);
+	ivec2 topRight		= ivec2(end.x, start.y);
+	ivec2 bottomRight	= end;
+
+	// Get each side's midpoint
+	ivec2 left		= MathHelpers::Midpoint(topLeft, bottomLeft);
+	ivec2 right		= MathHelpers::Midpoint(topRight, bottomRight);
+	ivec2 top		= MathHelpers::Midpoint(topLeft, topRight);
+	ivec2 bottom	= MathHelpers::Midpoint(bottomLeft, bottomRight);
+
+	// Get a randomised average height at each side
+	float leftHeight	= RandomAverage(cornerValues[0], cornerValues[1]);
+	float rightHeight	= RandomAverage(cornerValues[2], cornerValues[3]);
+	float topHeight		= RandomAverage(cornerValues[0], cornerValues[2]);
+	float bottomHeight	= RandomAverage(cornerValues[1], cornerValues[3]);
+	
+	// Finally assign the calculated points and heights
+	SetHeight(left, leftHeight);
+	SetHeight(right, rightHeight);
+	SetHeight(top, topHeight);
+	SetHeight(bottom, bottomHeight);
+
+	// After
+	// 0 --- T --- 2
+	// |   *   *   |
+	// | *       * |
+	// L           R
+	// | *       * |
+	// |   *   *   |
+	// 1 --- B --- 3
+}
+
+float Scene::RandomAverage(float a, float b)
+{
+	// Calculate random value based on max and min terrain height range
+	float random = ((float)rand() / (float)RAND_MAX) * (maxRange - minRange) + minRange;
+
+	return ((a + b) * 0.5f) + random;
+}
+
+// Function for generating a random height value based on a maximum value
+float Scene::GenerateRandomHeight(float maxHeight)
+{
+	float minValue = maxHeight - (maxHeight * 2.0f);
+	return ((float)rand() / (float)RAND_MAX) * (maxHeight - minValue) + minValue;
+}
+
+float Scene::GetHeight(ivec2 position)
+{
+	return heightMap[(position.x * resolution) + position.y];
+}
+
+float Scene::GetHeight(int x, int y)
+{
+	return heightMap[(x * resolution) + y];
+}
+
+void Scene::SetHeight(ivec2 position, float height)
+{
+	heightMap[(position.x * resolution) + position.y] = height;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void Scene::Shutdown()
 {

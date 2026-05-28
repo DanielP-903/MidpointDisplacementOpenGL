@@ -3,13 +3,36 @@
 
 #include<glm/glm.hpp>
 
-static class HelperFunctions
+class MathHelpers
 {
 public:
 	// Mathematical helpers
-	static float lerp(float x, float y, float t);
-	static glm::vec3 lerp(glm::vec3 x, glm::vec3 y, float t);
-	static glm::vec2 positionOnCircle(glm::vec2 centre, float radius = 5.0f, float angle = 0.0f);
+
+	template <typename T> 
+	static inline T lerp(const T& a, const T& b, float t)
+	{
+		return a * (b - a) + t;
+	}
+
+	template <typename T>
+	static inline float inverseLerp(const T& a, const T& b, const T& value)
+	{
+		return (value - a) / (b - a);
+	}
+
+	static inline glm::vec2 positionOnCircle(glm::vec2 centre, float radius, float angle)
+	{
+		float coords[] = { 0.0f, 0.0f };
+		coords[0] = radius * glm::cos(glm::radians(angle)) + centre.x;
+		coords[1] = radius * glm::sin(glm::radians(angle)) + centre.y;
+
+		return glm::make_vec2(coords);
+	}
+
+	static inline glm::vec2 Midpoint(const glm::vec2& a, const glm::vec2& b)
+	{
+		return (a + b) * 0.5f;
+	}
 };
 
 

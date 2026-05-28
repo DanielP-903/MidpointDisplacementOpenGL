@@ -24,7 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{968e0399-73c0-4ebd-9fe4-7314bcb74b26}</ProjectGuid>
     <RootNamespace>MyOpenGLProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <ProjectName>MidpointDispOpenGL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -73,12 +73,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Users\Ping998\Desktop\Projects\C++ Projects\OpenGL\Re-Learning-OpenGL\11 - Mesh\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Users\Ping998\Documents\Projects\C++ Projects\OpenGL\MidpointDisplacementOpenGL\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -87,6 +95,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,10 +111,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,6 +126,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,10 +142,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -170,6 +184,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EBO.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
